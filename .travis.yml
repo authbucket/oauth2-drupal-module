@@ -1,0 +1,15 @@
+---
+
+sudo: false
+
+dist: trusty
+
+language: php
+
+before_install:
+  - composer self-update
+  - composer global require drush/drush:@stable
+  - export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+install:
+  - drush --verbose --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
