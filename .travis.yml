@@ -12,7 +12,8 @@ before_install:
   - export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 install:
-  - drush core-quick-drupal --yes --core=drupal-8.0.x --profile=testing --no-server --db-url=sqlite://sites/default/files/.ht.sqlite
+  - drush core-quick-drupal --yes --root=drupal --core=drupal-8.0.x --profile=testing --no-server --db-url=sqlite://sites/default/files/.ht.sqlite
+  - cd drupal
 
 script:
   - phpunit -c core/phpunit.xml.dist
