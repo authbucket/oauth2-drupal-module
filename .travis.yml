@@ -19,4 +19,4 @@ install:
   - drush site-install testing --yes --db-url=sqlite://sites/default/files/.ht.sqlite
 
 script:
-  - phpunit -c core/phpunit.xml.dist
+  - php core/scripts/run-tests.sh PHPUnit
