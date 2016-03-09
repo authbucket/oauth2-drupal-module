@@ -15,7 +15,9 @@ before_install:
 install:
   - cd ..
   - git clone --branch 8.0.x https://git.drupal.org/project/drupal.git
-  - cd drupal
+  - cd drupal/modules
+  - ln -s ../../oauth2-drupal-module authbucket_oauth2
+  - cd ../
   - drush --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
   - drush --yes pm-enable simpletest
 
