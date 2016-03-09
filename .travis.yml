@@ -13,3 +13,6 @@ before_install:
 
 install:
   - drush core-quick-drupal --yes --core=drupal-8.0.x --profile=testing --no-server --db-url=sqlite://sites/default/files/.ht.sqlite
+
+script:
+  - phpunit -c core/phpunit.xml.dist
