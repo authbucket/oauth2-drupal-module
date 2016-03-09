@@ -12,4 +12,4 @@ before_install:
   - export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 install:
-  - drush --verbose --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
+  - drush core-quick-drupal --yes --core=drupal-8.0.x --profile=testing --no-server --db-url=sqlite://sites/default/files/.ht.sqlite
