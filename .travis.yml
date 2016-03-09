@@ -16,7 +16,7 @@ install:
   - cd ..
   - git clone --branch 8.0.x https://git.drupal.org/project/drupal.git
   - cd drupal
-  - composer update
+  - composer update --prefer-dist
   - drush site-install testing --yes --db-url=sqlite://sites/default/files/.ht.sqlite
 
 script:
