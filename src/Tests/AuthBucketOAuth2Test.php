@@ -14,7 +14,7 @@ use Drupal\simpletest\WebTestBase;
  *
  * @group authbucket_oauth2
  */
-class AuthBucketOAuth2Test extends WebTestCase {
+class AuthBucketOAuth2Test extends WebTestBase {
   public static $module = array('authbucket_oauth2');
 
   protected $profile = 'testing';
