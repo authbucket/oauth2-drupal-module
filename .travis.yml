@@ -15,10 +15,15 @@ before_install:
 install:
   - cd ..
   - git clone --branch 8.0.x https://git.drupal.org/project/drupal.git
-  - cd drupal/modules
-  - ln -s ../../oauth2-drupal-module authbucket_oauth2
-  - cd ../
+  - cd drupal
   - drush --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
+  - drush dl composer_manager
+  - drush --yes pm-enable composer_manager
+  - php modules/composer_manager/scripts/init.php
+  - composer drupal-update
+  - mv ../oauth2-drupal-module modules/authbucket_oauth2
+  - composer drupal-update
+  - drush --yes pm-enable authbucket_oauth2
   - drush --yes pm-enable simpletest
 
 script:

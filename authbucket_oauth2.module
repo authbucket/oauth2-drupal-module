@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Provides the OAuth2 authentication provider.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function authbucket_oauth2_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.authbucket_oauth2':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The OAuth2 Authentication module supplies a standards compliant <a href="http://tools.ietf.org/html/rfc6749">RFC6749 OAuth2.0</a> authentication provider for web service requests.') . '</p>';
+      return $output;
+  }
+}

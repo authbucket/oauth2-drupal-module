@@ -1,0 +1,21 @@
+{
+    "authors": [
+        {
+            "email": "hswong3i@pantarei-design.com",
+            "homepage": "http://hswong3i.net",
+            "name": "Wong Hoi Sing Edison"
+        }
+    ],
+    "description": "Drupal OAuth2 authentication provider",
+    "keywords": [
+        "oauth2",
+        "drupal"
+    ],
+    "license": "GPL-2.0+",
+    "name": "drupal/authbucket_oauth2",
+    "require": {
+        "authbucket/oauth2-php": "~3.0",
+        "php": ">=5.5.9"
+    },
+    "type": "drupal-module"
+}

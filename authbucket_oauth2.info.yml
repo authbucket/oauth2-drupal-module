@@ -1,0 +1,7 @@
+name: 'OAuth2 Authentication'
+type: module
+description: 'Provides the OAuth2 authentication provider'
+package: Web services
+core: 8.x
+dependencies:
+  - basic_auth
