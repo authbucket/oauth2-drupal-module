@@ -28,4 +28,4 @@ install:
   - drush --yes pm-enable simpletest
 
 script:
-  - php core/scripts/run-tests.sh --php `which php` PHPUnit
+  - php core/scripts/run-tests.sh --php `which php` authbucket_oauth2
