@@ -16,6 +16,7 @@ install:
   - cd ..
   - git clone --branch 8.0.x https://git.drupal.org/project/drupal.git
   - cd drupal
+  - curl -sL https://www.drupal.org/files/issues/2664274-37.patch | patch -p1
   - drush --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
   - drush dl composer_manager
   - drush --yes pm-enable composer_manager
