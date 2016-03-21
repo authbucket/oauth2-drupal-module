@@ -26,7 +26,7 @@ install:
   - composer drupal-update
   - drush --yes pm-enable authbucket_oauth2
   - drush --yes pm-enable simpletest
-  - php -S 127.0.0.1:8080 -t . & > /dev/null 2>&1
+  - php -S 127.0.0.1:8080 -t . >/dev/null 2>&1 &
 
 script:
-  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 --all
+  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 --concurrency 8 --all
