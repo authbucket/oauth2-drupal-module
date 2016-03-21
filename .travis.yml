@@ -6,6 +6,9 @@ dist: trusty
 
 language: php
 
+services:
+  - mysql
+
 before_install:
   - cp .auth.json ~/.composer/auth.json
   - composer self-update
@@ -17,7 +20,8 @@ install:
   - git clone --branch 8.0.x https://git.drupal.org/project/drupal.git
   - cd drupal
   - curl -sL https://www.drupal.org/files/issues/2664274-52.patch | patch -p1
-  - drush --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
+  - mysql -uroot -e "CREATE DATABASE drupal CHARACTER SET utf8 COLLATE utf8_general_ci;"
+  - drush --yes site-install testing --db-url=mysql://root:@127.0.0.1/drupal
   - drush dl composer_manager
   - drush --yes pm-enable composer_manager
   - php modules/composer_manager/scripts/init.php
