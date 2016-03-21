@@ -32,5 +32,12 @@ install:
   - drush --yes pm-enable simpletest
   - php -S 127.0.0.1:8080 -t . >/dev/null 2>&1 &
 
+before_script:
+  - mysql -e "SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES'"
+  - mysql -e "SET GLOBAL wait_timeout = 36000;"
+  - mysql -e "SET GLOBAL max_allowed_packet = 134209536;"
+  - mysql -e "SHOW VARIABLES LIKE 'max_allowed_packet';"
+  - mysql -e "SHOW VARIABLES LIKE 'wait_timeout';"
+
 script:
-  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 --concurrency 8 --all
+  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 --all
