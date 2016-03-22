@@ -6,9 +6,6 @@ dist: trusty
 
 language: php
 
-services:
-  - mysql
-
 before_install:
   - cp .auth.json ~/.composer/auth.json
   - composer self-update
@@ -20,8 +17,7 @@ install:
   - git clone --branch 8.0.x https://git.drupal.org/project/drupal.git
   - cd drupal
   - curl -sL https://www.drupal.org/files/issues/2664274-52.patch | patch -p1
-  - mysql -uroot -e "CREATE DATABASE drupal CHARACTER SET utf8 COLLATE utf8_general_ci;"
-  - drush --yes site-install testing --db-url=mysql://root:@127.0.0.1/drupal
+  - drush --yes site-install testing --db-url=sqlite://sites/default/files/.ht.sqlite
   - drush dl composer_manager
   - drush --yes pm-enable composer_manager
   - php modules/composer_manager/scripts/init.php
@@ -32,12 +28,6 @@ install:
   - drush --yes pm-enable simpletest
   - php -S 127.0.0.1:8080 -t . >/dev/null 2>&1 &
 
-before_script:
-  - mysql -e "SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES'"
-  - mysql -e "SET GLOBAL wait_timeout = 36000;"
-  - mysql -e "SET GLOBAL max_allowed_packet = 134209536;"
-  - mysql -e "SHOW VARIABLES LIKE 'max_allowed_packet';"
-  - mysql -e "SHOW VARIABLES LIKE 'wait_timeout';"
-
 script:
-  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 --all
+  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 PHPUnit
+  - php core/scripts/run-tests.sh --php `which php` --url http://127.0.0.1:8080 authbucket_oauth2
